@@ -1,4 +1,4 @@
-const words = require('./')
+const words = require('.')
 
 words.funky
 // [ 'flunky',

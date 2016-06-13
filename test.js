@@ -1,7 +1,7 @@
 /* global it */
 
 const expect = require('code').expect
-const words = require('./')
+const words = require('.')
 
 it('similar-english-words', function () {
   expect(words).to.be.an.object()
