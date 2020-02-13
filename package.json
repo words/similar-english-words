@@ -25,7 +25,7 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "an-array-of-english-words": "^1.0.0",
+    "an-array-of-english-words": "^2.0.0",
     "levenshtein-edit-distance": "^2.0.0",
     "prettier": "^1.0.0",
     "remark-cli": "^7.0.0",
