@@ -27,4 +27,4 @@ words.forEach(function(a) {
   }
 })
 
-fs.writeFileSync('./words.json', JSON.stringify(results, null, 2) + '\n')
+fs.writeFileSync('./index.json', JSON.stringify(results, null, 2) + '\n')

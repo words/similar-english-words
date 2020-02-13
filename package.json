@@ -19,9 +19,9 @@
     "Zeke Sikelianos <zeke@sikelianos.com> (http://zeke.sikelianos.com)",
     "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)"
   ],
-  "main": "words.json",
+  "main": "index.json",
   "files": [
-    "words.json"
+    "index.json"
   ],
   "dependencies": {},
   "devDependencies": {
