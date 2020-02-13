@@ -37,7 +37,7 @@
     "generate": "node build",
     "format": "remark . -qfo && prettier --write \"**/*.js\" && xo --fix",
     "test-api": "node test",
-    "test": "npm run generate && npm run format && npm run test-api"
+    "test": "npm run format && npm run test-api"
   },
   "prettier": {
     "tabWidth": 2,
