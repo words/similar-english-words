@@ -1,16 +1,8 @@
 {
   "name": "similar-english-words",
   "version": "1.0.0",
-  "description": "Give me a word and I'll give you an array of words that differ by a single letter.",
-  "main": "words.json",
-  "scripts": {
-    "test": "standard --format && mocha",
-    "build": "node build.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/zeke/similar-english-words"
-  },
+  "description": "Give me a word and I’ll give you an array of words that differ by a single letter",
+  "license": "ISC",
   "keywords": [
     "words",
     "list",
@@ -20,18 +12,48 @@
     "language",
     "levenmorpher"
   ],
-  "author": "zeke",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/zeke/similar-english-words/issues"
-  },
-  "homepage": "https://github.com/zeke/similar-english-words",
+  "repository": "words/similar-english-words",
+  "bugs": "https://github.com/words/similar-english-words/issues",
+  "author": "Zeke Sikelianos <zeke@sikelianos.com> (http://zeke.sikelianos.com)",
+  "contributors": [
+    "Zeke Sikelianos <zeke@sikelianos.com> (http://zeke.sikelianos.com)",
+    "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)"
+  ],
+  "main": "words.json",
+  "files": [
+    "words.json"
+  ],
+  "dependencies": {},
   "devDependencies": {
-    "an-array-of-english-words": "^1.0.1",
-    "code": "^1.4.0",
-    "leven": "^1.0.1",
-    "lodash.compact": "^3.0.0",
-    "mocha": "^2.2.4",
-    "standard": "^3.7.3"
+    "an-array-of-english-words": "^1.0.0",
+    "levenshtein-edit-distance": "^2.0.0",
+    "prettier": "^1.0.0",
+    "remark-cli": "^7.0.0",
+    "remark-preset-wooorm": "^6.0.0",
+    "tape": "^4.0.0",
+    "xo": "^0.26.0"
+  },
+  "scripts": {
+    "generate": "node build",
+    "format": "remark . -qfo && prettier --write \"**/*.js\" && xo --fix",
+    "test-api": "node test",
+    "test": "npm run generate && npm run format && npm run test-api"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "useTabs": false,
+    "singleQuote": true,
+    "bracketSpacing": false,
+    "semi": false,
+    "trailingComma": "none"
+  },
+  "xo": {
+    "prettier": true,
+    "esnext": false
+  },
+  "remarkConfig": {
+    "plugins": [
+      "preset-wooorm"
+    ]
   }
 }

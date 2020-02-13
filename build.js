@@ -1,27 +1,29 @@
-const words = require('an-array-of-english-words')
-const distance = require('leven')
-const fs = require('fs')
+var fs = require('fs')
+var words = require('an-array-of-english-words')
+var levenshtein = require('levenshtein-edit-distance')
 var results = {}
 
-words.forEach(function (word) {
-  if (results[word]) {
-    console.log(`${word} already added`)
-    return
-  }
+words.forEach(function(a) {
+  var candidates
 
-  var candidates = words.filter(function (_) {
-    // check for similar length first to cheapen the operation
-    return Math.abs(_.length - word.length) < 2 && distance(_, word) === 1
-  })
+  if (results[a]) {
+    console.log('`%s` already added', a)
+  } else {
+    candidates = words.filter(
+      b =>
+        // Check for similar length first to cheapen the operation:
+        Math.abs(b.length - a.length) < 2 && levenshtein(a, b) === 1
+    )
 
-  if (candidates.length === 1) {
-    results[word] = candidates
-    results[candidates[0]] = [word]
-    console.log(`${word}: ${candidates} (and the reverse)`)
-  } else if (candidates.length > 1) {
-    results[word] = candidates
-    console.log(`${word}: ${candidates}`)
+    if (candidates.length === 1) {
+      results[a] = candidates
+      results[candidates[0]] = [a]
+      console.log('`%s`: `%j` (and the reverse)', a, candidates)
+    } else if (candidates.length > 1) {
+      results[a] = candidates
+      console.log('`%s`: `%j`', a, candidates)
+    }
   }
 })
 
-fs.writeFileSync('./words2.json', JSON.stringify(results, null, 2))
+fs.writeFileSync('./words.json', JSON.stringify(results, null, 2) + '\n')

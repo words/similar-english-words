@@ -1,14 +1,21 @@
-/* global it */
+var test = require('tape')
+var words = require('.')
 
-const expect = require('code').expect
-const words = require('.')
+test('similar-english-words', function(t) {
+  t.equal(typeof words, 'object', 'should be an object')
+  t.ok('fun' in words, 'should include words')
+  t.notOk('funkeldunken' in words, 'should not include non-words')
 
-it('similar-english-words', function () {
-  expect(words).to.be.an.object()
-  expect(words.fun).to.be.an.array()
-  expect(words.fun.indexOf('funk')).to.be.above(-1)
-  expect(words.fun.indexOf('fan')).to.be.above(-1)
-  expect(words.fun.indexOf('sun')).to.be.above(-1)
-  expect(words.fun.indexOf('fun')).to.equal(-1)
-  expect(words.funkeldunken).to.not.exist()
+  t.ok(Array.isArray(words.fun), 'values should be an array')
+
+  t.ok(
+    words.fun.includes('funk') &&
+      words.fun.includes('fan') &&
+      words.fun.includes('sun'),
+    'should include related words'
+  )
+
+  t.notOk(words.fun.includes('fun'), 'should not include self')
+
+  t.end()
 })
