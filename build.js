@@ -7,7 +7,7 @@ words.forEach(function(a) {
   var candidates
 
   if (results[a]) {
-    console.log('`%s` already added', a)
+    console.log('%s (already added)', a)
   } else {
     candidates = words.filter(
       b =>
@@ -18,10 +18,11 @@ words.forEach(function(a) {
     if (candidates.length === 1) {
       results[a] = candidates
       results[candidates[0]] = [a]
-      console.log('`%s`: `%j` (and the reverse)', a, candidates)
+      console.log(a)
+      console.log(candidates[0])
     } else if (candidates.length > 1) {
       results[a] = candidates
-      console.log('`%s`: `%j`', a, candidates)
+      console.log(a)
     }
   }
 })
