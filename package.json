@@ -1,6 +1,6 @@
 {
   "name": "similar-english-words",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Give me a word and I’ll give you an array of words that differ by a single letter",
   "license": "ISC",
   "keywords": [
